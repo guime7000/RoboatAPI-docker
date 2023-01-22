@@ -1,0 +1,6 @@
+FROM httpd:2.4
+
+COPY ./html/ _VHOST_ROOT_DIRECTORY_
+COPY ./Apache_conf/my-httpd.conf _VHOST_ROOT_DIRECTORY_
+COPY ./Apache_conf/_WEBSITE_CONF_FILENAME_ _APACHE_CONF_DIRECTORY_
+

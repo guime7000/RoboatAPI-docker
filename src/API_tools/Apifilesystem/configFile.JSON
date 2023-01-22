@@ -1,0 +1,13 @@
+{
+"fleetList" : ["tom","bob","fleet"],
+"boatFileDataStructure" : {"ts" : 0,
+                        "lat" : 0,
+                        "lon" : 0,
+                        "distanceToEnd" : 0,
+                        "rank" : 0,
+                        "speed" : 0,
+                        "tws" : 0,
+                        "twa" : 0,
+                        "heading": 0
+                        }
+}
