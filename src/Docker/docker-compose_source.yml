@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile_apache
     ports:
-      - 8080:80
+      - ${HOST_APACHE_PORT}:${CONTAINER_APACHE_PORT}
 
   myfastapi:
     env_file: .env

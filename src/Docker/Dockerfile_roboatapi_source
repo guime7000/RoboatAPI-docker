@@ -1,9 +1,9 @@
 FROM python:3.9
 
-WORKDIR /App
+WORKDIR _CONTAINER_WORKING_DIR_
 
-COPY ./requirements.txt /App/requirements.txt
+COPY ./requirements.txt _CONTAINER_WORKING_DIR_/requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /App/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r _CONTAINER_WORKING_DIR_/requirements.txt
 
-COPY ./App /App
+COPY ._CONTAINER_WORKING_DIR_ _CONTAINER_WORKING_DIR_

@@ -35,16 +35,11 @@ GET /archives/<name of the boat> : to retrieve all the history (since the beginn
 
 
 """
-# configDir = os.getenv("CONTAINER_CONFIG_DIR")#"/home/tom/Bureau/Developpement/Formation/Docker/ROboatAPI/Conteneur/Conf/"
+containerWorkingDir = os.getenv("CONTAINER_WORKING_DIR")
+boatsDirectoryPath = os.path.join(containerWorkingDir,"Data/Boats")
+archiveDirectoryPath = os.path.join(containerWorkingDir,"Data/Archives")
 
-# with open(os.path.join(configDir,'configFile.JSON'), 'r') as inputConfigFile :
-#     config = json.load(inputConfigFile)
-
-dataFilesPath = os.getenv("CONTAINER_DATA_PATH")
-boatsDirectoryPath = os.path.join(dataFilesPath,"Boats")
-archiveDirectoryPath = os.path.join(dataFilesPath,"Archives")
-
-logsDirectoryPath = os.getenv("CONTAINER_LOGS_PATH")
+logsDirectoryPath = os.path.join(containerWorkingDir,"Logs")
 
 # Log files config 
 logging.getLogger('').setLevel(logging.DEBUG)
@@ -137,9 +132,8 @@ async def position(boatInfos : BoatPos):
     """
     postLogger = logging.getLogger('post')
     
-    secretDirectoryPath = os.getenv("CONTAINER_SECRET_PATH")
+    secretDirectoryPath = os.path.join(os.getenv("CONTAINER_WORKING_DIR"),"Secret")
     with open(os.path.join(secretDirectoryPath,"secret.JSON"), 'r') as pwdf :
-    #with open("/App/Secret/secret.JSON", 'r') as pwdf :
         pwd = json.load(pwdf)
 
     if pwd[boatInfos.inName] != boatInfos.inPwd :

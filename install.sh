@@ -64,14 +64,18 @@ echo "####### End of Apache container config ############"
 
 ########### Roboat API files copy ###########################
 cp -R ./src/App ./Docker_image/App
+# cp -R ./src/App ./Docker_image/App
 
 # Creation of data and log Directory structure on Host
 #mkdir ${HOST_DATA_PATH}
 #mkdir ${HOST_LOGS_PATH}
 python3 ${PWD}/src/API_tools/Apifilesystem/apiFileSystemCreator.py
 
-cp -R ${HOST_DATA_PATH} ./Docker_image/App/
-cp -R ${HOST_LOGS_PATH} ./Docker_image/App/
+# cp -R ${HOST_DATA_PATH} ./Docker_image/App/Data
+# cp -R ${HOST_LOGS_PATH} ./Docker_image/App/Logs
+
+cp -R ${HOST_DATA_PATH} ./Docker_image/${CONTAINER_WORKING_DIR}/Data
+cp -R ${HOST_LOGS_PATH} ./Docker_image/${CONTAINER_WORKING_DIR}/Logs
 
 
 ################################# Generating all requested files for Docker-compose ###########################
@@ -79,7 +83,7 @@ cp -R ${HOST_LOGS_PATH} ./Docker_image/App/
 # Creates a Dockerfile_apache file with the right virtualhost conf file name
 DockerFileApache="./Docker_image/Dockerfile_apache"
 if [ -f "$DockerFileApache" ] ; then
-    echo "Found old Dockerfile_apache file in ./Docker_image/Apache_conf, removing it !"
+    echo "Found old Dockerfile_apache file in ./Docker_image, removing it !"
     rm -f "$DockerFileApache"
     echo "Removed old Dockerfile_apache"
 fi
@@ -87,9 +91,22 @@ sed 's@_VHOST_ROOT_DIRECTORY_@'${VHOST_ROOT_DIRECTORY}'@;s@_WEBSITE_CONF_FILENAM
 echo "Created new file Dockerfile_apache for httpd image in ./Docker_image/"
 
 cp ./src/Docker/.env ./Docker_image/
-cp ./src/Docker/docker-compose_source.yml ./Docker_image/docker-compose.yml
-cp ./src/Docker/Dockerfile_roboatapi_source ./Docker_image/Dockerfile_roboatapi
+
+DockerFileRoboatapi="./Docker_image/Dockerfile_roboatapi"
+if [ -f "$DockerFileRoboatapi" ] ; then
+    echo "Found old Dockerfile_roboatapi file in ./Docker_image, removing it !"
+    rm -f "$DockerFileRoboatapi"
+    echo "Removed old Dockerfile_roboatapi"
+fi
+sed 's@_CONTAINER_WORKING_DIR_@'${CONTAINER_WORKING_DIR}'@;s@_CONTAINER_WORKING_DIR2_@'${CONTAINER_WORKING_DIR}'@' ./src/Docker/Dockerfile_roboatapi_source >> ./Docker_image/Dockerfile_roboatapi
+# cp ./src/Docker/Dockerfile_roboatapi_source ./Docker_image/Dockerfile_roboatapi
+
+
 cp ./src/Docker/requirements.txt ./Docker_image/requirements.txt
+
+
+
+cp ./src/Docker/docker-compose_source.yml ./Docker_image/docker-compose.yml
 echo "HTTPD image build files READY !"
 
 
