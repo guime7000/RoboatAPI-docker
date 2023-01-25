@@ -43,7 +43,7 @@ if [ -f "$websiteIndexFile" ] ; then
     echo "Removed old index.html"
 fi
 # Creates website's index.html by replacing env_names_patterns by desired environment variables values before apache container build
-sed 's@UVICORN_HOST_URL@'${HOST_DOMAIN_NAME}'@;s@UVICORN_PORT_NUMBER@'${UVICORN_PORT_NUMBER}'@' ./src/Apache/index_source.html >> $websiteIndexFile
+sed 's@HOST_DOMAIN_NAME@'${HOST_DOMAIN_NAME}'@;s@UVICORN_PORT_NUMBER@'${UVICORN_PORT_NUMBER}'@' ./src/Apache/index_source.html >> $websiteIndexFile
 echo "Created new index.html in ./Docker_image/html"
 
 # If old virtualhosts.conf file exists, removes it before creating a new one !
@@ -63,7 +63,7 @@ echo "####### End of Apache container config ############"
 #################################
 
 ########### Roboat API files copy ###########################
-cp -R ./src/App ./Docker_image/App
+cp -R ./src/App ./Docker_image/${CONTAINER_WORKING_DIR}
 # cp -R ./src/App ./Docker_image/App
 
 # Creation of data and log Directory structure on Host
