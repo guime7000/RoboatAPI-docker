@@ -25,6 +25,12 @@ Written and built using ***debian 11*** with ***Docker version 20.10.22, build 3
 
     - **UVICORN_PORT_NUMBER** : the port number to access your API (http://HOST_DOMAIN_NAME:UVICORN_PORT_NUMBER)
         
+    - **HOST_APACHE_PORT** : The port to access the website page (host side) from outside
+
+    - **CONTAINER_APACHE_PORT** : The port the httpd container vhost is listening to.…
+
+    - **CONTAINER_WORKING_DIR** : The containers directory in which the roboatapi App will be stored
+
     - **HOST_DATA_PATH** : The path on the host where you want to save your boat positions files
         
     - **HOST_LOGS_PATH** : The path on the host where you want to save your log files
