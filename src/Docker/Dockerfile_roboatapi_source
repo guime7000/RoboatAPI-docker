@@ -6,4 +6,4 @@ COPY ./requirements.txt _CONTAINER_WORKING_DIR_/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r _CONTAINER_WORKING_DIR_/requirements.txt
 
-COPY ._CONTAINER_WORKING_DIR_ _CONTAINER_WORKING_DIR_
+COPY ._CONTAINER_WORKING_DIR_ _CONTAINER_WORKING_DIR2_
