@@ -45,7 +45,7 @@ Written and built using ***debian 11*** with ***Docker version 20.10.22, build 3
          
          !!! Be sure you keep a "fleet" user in the fleetlist field of configFile.JSON !!!
          
-         boatFileDataStructure should not be edited until you 
+         boatFileDataStructure should not be edited until you know what you're doing....at your own risk ;-) 
          
  5. Make the install.sh bash script executable and....execute it ! 
          
