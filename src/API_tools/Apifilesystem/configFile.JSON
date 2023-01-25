@@ -1,5 +1,5 @@
 {
-"fleetList" : ["tom","bob","fleet"],
+"fleetList" : ["user1","user2","fleet"],
 "boatFileDataStructure" : {"ts" : 0,
                         "lat" : 0,
                         "lon" : 0,

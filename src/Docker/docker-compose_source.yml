@@ -22,5 +22,5 @@ services:
     ports:
       - "${UVICORN_PORT_NUMBER}:${UVICORN_PORT_NUMBER}"
     network_mode: bridge
-   command: uvicorn roboatAPI:app --host ${HOST_DOMAIN_NAME} --port ${UVICORN_PORT_NUMBER}
+    command: uvicorn roboatAPI:app --host ${HOST_DOMAIN_NAME} --port ${UVICORN_PORT_NUMBER}
 
