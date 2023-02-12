@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Sets environment variables for fastAPI and apache containers config
 
