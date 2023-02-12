@@ -2,15 +2,15 @@
 
 Look at this repo and its files as an **exercise** to discover for the first time docker's ecosystem.
 
-The aim of the exercise was to be set up a docker image to deploy the [fastAPI](https://github.com/guime7000/RoboatAPI) I wrote for the final race of [the Virtual Regatta IRoboat Challenge](https://www.virtualregatta.com/fr/deep-sea-the-iroboat-challenge/).
+The aim of the exercise was to set up a docker image to deploy the [fastAPI](https://github.com/guime7000/RoboatAPI) I wrote for the final race of [the Virtual Regatta IRoboat Challenge](https://www.virtualregatta.com/fr/deep-sea-the-iroboat-challenge/).
 
 After following the entire setup stages you should be able to:
+
     - access a demo web page on port 8080 thanks to a httpd docker container
+
     - get the Roboat fastAPI working thanks to a fastapi docker container
 
 #### Still on the TODO list :
-    - setup a nginx reverse proxy container so that the containered services are correctly served..
-    - let all config parameters being editable
     - explain the goal of the archive-fleet.py and concatenate_fleet.py files (in src/API_tools)
 
 Written and built using ***debian 11*** with ***Docker version 20.10.22, build 3a2c30b*** and ***Docker Compose version v2.0.1***
