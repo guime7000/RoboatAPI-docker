@@ -1,6 +1,0 @@
-FROM httpd:2.4
-
-COPY ./html/ /usr/local/apache2/htdocs/
-COPY ./Apache_conf/my-httpd.conf /usr/local/apache2/htdocs/
-COPY ./Apache_conf/host_domain_or_IP_to_reach_the_API.conf _APACHE_CONF_DIRECTORY_
-
